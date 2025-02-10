@@ -49,4 +49,9 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function file(): \Illuminate\Database\Eloquent\Relations\HasOne
+    {
+        return $this->hasone(File::class);
+    }
 }

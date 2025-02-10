@@ -25,6 +25,9 @@ class UserFactory extends Factory
     {
         return [
             'name' => fake()->name(),
+            'type'=> $this->faker->randomElement(['member', 'admin']),
+            'mobile'=> $this->faker->phoneNumber(),
+            'image'=> $this->faker->imageUrl(),
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
             'password' => static::$password ??= Hash::make('password'),

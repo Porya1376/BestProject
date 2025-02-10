@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('type');
-            $table->integer('mobile');
+            $table->string('mobile');
             $table->string('username');
             $table->string('password');
             $table->string('image')->nullable();
