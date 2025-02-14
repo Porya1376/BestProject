@@ -17,10 +17,10 @@ return new class extends Migration {
             $table->string('status');
             $table->string('creator_user_id');
             $table->string('acceptor_user_id');
-            $table->unsignedBigInteger('category_id')->unique();
+            $table->unsignedBigInteger('category_id');
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->string('reject_reason')->nullable();
-            $table->string('data');
+            $table->text('data');
             $table->dateTime('accpeted_at')->nullable();
             $table->timestamps();
         });

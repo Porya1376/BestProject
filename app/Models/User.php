@@ -3,6 +3,7 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Enums\UserTypeEnum;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -21,7 +22,6 @@ class User extends Authenticatable
         'name',
         'type',
         'mobile',
-        'username',
         'image',
         'email',
         'password',
@@ -47,11 +47,7 @@ class User extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'type' => UserTypeEnum::class,
         ];
-    }
-
-    public function file(): \Illuminate\Database\Eloquent\Relations\HasOne
-    {
-        return $this->hasone(File::class);
     }
 }
