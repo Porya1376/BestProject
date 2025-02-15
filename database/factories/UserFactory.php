@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Enums\UserTypeEnum;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
@@ -24,8 +25,11 @@ class UserFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => fake()->name(),
-            'email' => fake()->unique()->safeEmail(),
+            'name' => fake()->name,
+            'type' => $this->faker->randomElement(UserTypeEnum::cases()),
+            'mobile' => $this->faker->phoneNumber,
+            'image' => $this->faker->imageUrl,
+            'email' => fake()->unique()->safeEmail,
             'email_verified_at' => now(),
             'password' => static::$password ??= Hash::make('password'),
             'remember_token' => Str::random(10),
