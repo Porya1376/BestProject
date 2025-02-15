@@ -1,5 +1,6 @@
 <?php
 
+use App\Enums\FileTypeEnum;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -19,7 +20,7 @@ return new class extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->unsignedBigInteger('product_id')->unique();
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
-            $table->string('type');
+            $table->enum('type' , array_column(FileTypeEnum::cases(),'value'));
             $table->unsignedBigInteger('size');
             $table->timestamps();
         });

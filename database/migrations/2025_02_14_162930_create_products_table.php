@@ -1,5 +1,7 @@
 <?php
 
+use App\Enums\ProductStatusEnum;
+use App\Enums\ProductTypeEnum;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -13,8 +15,8 @@ return new class extends Migration {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('type');
-            $table->string('status');
+            $table->enum('type' , array_column(ProductTypeEnum::cases(), 'value'));
+            $table->enum('status' ,array_column(ProductStatusEnum::cases(), 'value'));
             $table->string('creator_user_id');
             $table->string('acceptor_user_id');
             $table->unsignedBigInteger('category_id');

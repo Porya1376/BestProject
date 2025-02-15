@@ -2,6 +2,9 @@
 
 namespace App\Models;
 
+use App\Enums\FileTypeEnum;
+use App\Enums\ProductStatusEnum;
+use App\Enums\ProductTypeEnum;
 use Database\Factories\UserFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -27,6 +30,11 @@ class Product extends Model
         'reject_reason',
         'data',
         'accpeted_at',
+    ];
+
+    protected $casts = [
+        'type' => ProductTypeEnum::class,
+        'status' => ProductStatusEnum::class,
     ];
 
     public function category(): \Illuminate\Database\Eloquent\Relations\BelongsTo

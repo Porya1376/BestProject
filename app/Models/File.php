@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\FileTypeEnum;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
@@ -23,6 +24,10 @@ class File extends Model
         'product_id',
         'type',
         'size',
+    ];
+
+    protected $casts = [
+        'type' => FileTypeEnum::class,
     ];
 
     public function user(): \Illuminate\Database\Eloquent\Relations\BelongsTo
